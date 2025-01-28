@@ -1,0 +1,52 @@
+Let's say we have five cmoponents c1, c2, c3, c4, c5
+Add and display messages component1 , component2, etc respectively by keeping component1 as parent
+Display them sizewise from h1 to h5
+Now add a props in component1 and it should tell "hello from component1"
+
+function C1() {
+  var msg = "Hello from component1";
+  console.log(msg)
+
+  return (
+    <div>
+      <h1>c1</h1>
+      <h1>{msg}</h1>
+      <C2 />
+    </div>
+  );
+}
+
+Note:
+     *Whenever we are using something inside curlybrace , it can be either a js object or react component.
+
+           *Props can be passed b/w components only by following the hierarchy which means parent to child.
+           *To overcome this in-terms of efficiency , we are using hooks
+             
+             Conclusion:
+                 *if we want to use state in one componet to another component the only way to achieve it by passing it in hierarchy.
+                 This is not efficient. to make it efficient we have an exclusive hook called useContext
+
+create 4 components :
+output:
+
+App Component
+
+Container
+
+Users
+
+User
+
+
+*useContext:
+           -> Without following the hierarchy , passing one component to other component using hook.
+            Two imp things :
+                    1) Create Context
+                    2) useContext
+
+            *In the give example create Context will be done in a component and that will be used in userComponent using useContext.
+
+*Syncronization
+       -> Syncronizing an component with an external system.
+       -> After our action , monitoring or seeing the sideeffects happening in the functional component is possible using useEffect
+          hook.

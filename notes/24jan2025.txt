@@ -1,0 +1,54 @@
+Mongo db:
+            * It is a NO SQL database.
+            * It is a document-oriented database.
+            * It is a schema-less database.
+       
+        Compass:
+                *compass helps to fetch data from mongodb server means compass helps you to reach mongo db .. like its client .
+                *compass is an interface helps us to reach mongo db server which means using compass we fetch data from the server
+                *(Its like client[GUI])
+        
+        Mongo Shell:
+              Mongosh:
+                      *Mongo shell was replaced with Mongosh.
+        
+    
+There are two terms which is important in mongodb:
+ 
+ 1 Data Modelling
+ 2 Schema
+
+ 1) Data Modelling:
+                   Fixing the structure of your data planning the structure.
+2)  Schema:
+                   It's an actual blueprint of the db which you have created by fixing the format using data Modelling
+
+SQL - Record
+MONGO - document
+
+SQL - TABLE
+MONGO - COLLECTION
+
+COLLECTIONS ARE STORED IN db
+
+MONGO WILL HAVE MULTIPLE DB
+
+
+
+Mongo db commands :
+
+ use empdetails
+/*switched to db empdetails/*
+
+ show dbs
+
+ db.emp.insertOne({empname:"Tiger"})
+
+ db.emp.insertOne({ name: "John Doe", age: 30, position: "Developer" })
+
+ db.emp.insertMany([
+    { name: "Alice", age: 25, position: "Designer" },
+    { name: "Bob", age: 35, position: "Manager" }
+])
+
+db.emp.find() // Fetch all documents

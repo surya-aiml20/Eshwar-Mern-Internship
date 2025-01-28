@@ -1,0 +1,72 @@
+UseEffect:
+             *Upon the condition or action, we apply in our functional components, monitoring the impact or side effects can be 
+             done using UseEffect hook.
+
+             *UseEffect accepts two arguments 
+                       1. Callback functions
+                       2. Dependency array
+
+                       Note : Callback function is like constructor in java .It is called when the component mounts.
+
+import react, {useState, UseEffect}from 'react';
+function TimerComponent(){
+    const[seconds, setSeconds]= useState(0);
+
+    UseEffect(()=>{
+        const interval=setInterval(() => {
+            setSeconds(prevSeconds => prevSeconds+1);
+    }, 500);
+    return()=> clearInterval(interval);
+    },[]);
+    return(
+        <div>
+        <h2>Timer:</h2>
+        <p>{seconds}Seconds are passing.</p>
+        </div>
+    );
+}
+export default TimerComponent;
+
+
+
+TO AVOID MEMORY LEAK AND UNWANTED PERFORMANCE WE USE CLEANUP FUNCTION :
+
+UseEffect hook:[can monitor functional component side effects]
+
+import React,{useState ,useEffect} from "react";
+
+function ExampleComponent(){
+    const[count, SetCount] = useState(0);
+    useEffect(()=> {
+        document.title =` You clicked ${count} times.`;
+        return () => {
+            document.title = React App;
+        };
+
+    },[count]);
+    return(
+        <div>
+            <p>
+                you clicked {count} times
+            </p>
+            <button onClick={()=>SetCount(count+1)}>
+                Click me
+            </button>
+        </div>
+    )
+}
+
+export default ExampleComponent;
+
+
+
+
+
+
+
+
+
+
+
+
+

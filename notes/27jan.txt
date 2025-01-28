@@ -1,0 +1,253 @@
+Node Js:
+         * Connects the frontend (react app ) with the database (MongoDB)
+         * Popular JS library or we call it as runtime environment which allows us to run Javascript in server side 
+    Note:
+         * Maintain split terminals in VS code in order to use client and server side code simultaneously.
+    Run command :
+         * Always start the server first [node (file_name)server.js]
+         *Command to run client side code [npm start]
+         
+         by running the command "nodemon server.js" in the terminal.
+
+    To install Express using npm, run the following command in your terminal:
+        * npm i express
+
+    We can delete package.json . To get it back :
+        * npm init -y
+=================================================================================================================================================
+
+1) Backend logic in Node Js (server.js) inside Server folder:
+
+const express = require('express'); 
+//Import express
+
+const app = express();     
+// Create an instance of an Express application . Used for routing, middleware management and many reasons to keep routing clean
+
+// Define a port for the server to listen on
+const port = 5000; // Specify the port
+
+// Define a route for the HTTP GET request to the root URL ('/')
+// req represents the request object , and res represents the response object
+app.get('/', (req, res) => {
+  res.send('Hello from the server!'); // Send a response when the route is accessed
+});
+
+// Start the server and listen on the specified port
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`); // Log the URL when the server starts
+});
+
+Axios:
+     * It is a popular js framework used to make http request from browser ( client) and node (server)
+     * Axiom is known for easy and clean syntax .
+     * Also known for handling asynchronous requests efficiently, especially works well with API's and REST API's.
+     * When we write an API for an exclusive purpose , we call it as REST API.
+
+Cors:
+     * CORS _ Cross origin resource sharing
+     * When a webpage requests information from a resource (whether to accept the request and process it or not will be defined in a rulebook)
+       for this purpose we use Cors.
+
+Installation :
+     * npm i axios
+     * npm i cors
+
+Command to install nodemon:
+     *npm i -g nodemon
+     
+=================================================================================================================================================
+
+2) *server.js using a Greetings.js
+
+const express = require('express'); 
+const greet = require('../src/Greetings');
+
+const app = express();    
+const port = 5000; 
+
+app.get('/', (req, res) => {
+  res.send(`
+    <h1> Server </h1>
+    <p>Hello from the server!<p>
+    `); 
+});
+
+app.get('/greet', (req, res) => {
+    greet();
+    res.send('Check the server console for a greeting message!');
+});
+
+app.listen(port, () => {
+  console.log(Server running on http://localhost:${port}); 
+});
+
+
+Greetings.js :
+
+const greetingMessage = 'Hello, from the custome module!';
+
+const greet = () => {
+    console.log(greetingMessage);
+};
+
+module.exports = greet;
+
+
+     
+
+=================================================================================================================================================
+
+3) Using two navs
+
+*****const express = require('express'); 
+const greet = require('../src/Greetings');
+const About = require('../src/About');
+
+const app = express();    
+const port = 5000; 
+
+app.get('/', (req, res) => {
+  res.send(`
+    <h1> Server </h1>
+    <p>Hello from the server!<p>
+    `); 
+});
+
+app.get('/greet', (req, res) => {
+    greet();
+    res.send('Check the server console for a greeting message!');
+});
+
+app.get('/About', (req, res) => {
+    About();
+    res.send('Abouttttttttttt');
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`); 
+});
+
+******const aboutMessage = 'This is the About Section'
+
+const About = () => {
+    console.log(aboutMessage);
+}
+
+module.exports = About;
+
+
+***************************  * In this example ,'hello this is data from server' is the data present in the server.     
+                             * Using             http get method, via api/data.
+                             * Server responds as json .
+                             * From the json files , I want to filter only the message , so we re using from cors response.data.message
+
+=================================================================================================================================================
+
+4) Fetching data from server.js to DataComponent and rendering it in App.js and running react:
+
+                                           server.js
+
+const express=require('express');//require is the keyword from node js,express is the library from javascript
+const cors= require('cors');//import the custom module
+
+const app=express();
+const port=3000;//define the port number the server will listen on
+//middleware
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/data',(req,res)=>{
+    
+    res.json({message:'Hello,this is a data from the server!'});
+});
+
+app.listen(port,()=> {
+    //log message indicating the serve is running and provide the URL to access it
+    console.log(`Server is running at http://localhost:${port}`);
+});
+
+                                           DataComponent.js
+
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';//make sure axios is installed
+
+const DataComponent=()=>{
+    const[data,setData]=useState('');
+    useEffect(()=>{
+        axios.get('http://localhost:3000/api/data').then(response=>
+            setData(response.data.message))
+            .catch(error=>console.error('Error fetching data:',error));
+    },[]);
+    return(
+        <div>
+            <h1>Data from server</h1>
+            <p>{data}</p>
+        </div>
+    );
+};
+export default DataComponent;
+                                          
+                                      App.js
+
+import './App.css';
+import DataComponent from './DataComponent';
+
+function App() {
+  return (
+    <div>
+     <DataComponent />
+    </div>
+  );
+}
+
+export default App;
+
+=================================================================================================================================================
+5) For fetching 2 or more messages
+                                            server.js
+
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+const port = 3000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/data', (req, res) => {
+    res.json({
+        message1: 'I AM AFRIN FROM SOULFUL AI!',
+        message2: 'HELLO FROM THE SERVER!'
+    });
+});
+
+app.listen(port, () => {
+    console.log(Server is running at http://localhost:${port});
+});
+
+                                           DataComponent.js
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const DataComponent = () => {
+    const [data, setData] = useState({ message1: '', message2: '' });
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/data')
+            .then(response => setData(response.data))
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
+    return (
+        <div>
+            <h1>Data from Server</h1>
+            <p>{data.message1}</p>
+            <p>{data.message2}</p>
+        </div>
+    );
+};
+
+export default DataComponent;

@@ -1,0 +1,90 @@
+
+
+
+
+
+
+
+
+
+
+
+db.customers.find({hobbies:{$nin:['cooking']}})
+
+db.products.find({$and:[{price:{$Gt:80000}},{brand:'Apple'}]})
+
+db.companies.aggregate([{$lookup:{form:'employees',localField:'_id',foreignField:'company_id',as:'Employees'}}])
+
+
+**create a db Bank and create 2 collections under that db. 1st collection name is customerPersonal and 2nd collection name is customerAccount
+
+customerPersonal data model and schema
+_id, name(String), address(array), phoneNumber(object with two numbers and names is one and two ), age(integer)
+
+customerAccount data model and schema
+_id, AccountNumber(integer), Branch (String), BankName(STring), IFSCcode(String), CurrentBalance(float) , AccountType(String)[savings or current], 
+OverDraft(String)[yes for current account and no for savings account ]
+
+1) Filter only overdraft category yes
+2) Display only the customers address where the branch names are same .
+3) CurrentBalance 10000 to 20000 , filter and get only their phoneNumber
+4) Filter only the savingsAccount people completre details
+5) Filter the data where IFSCcode is same in 2nd collection
+
+Answers :
+
+1) db.customerAccount.find({ "OverDraft": "Yes" })
+
+2) 
+
+
+
+
+3) db.customerAccount.aggregate([
+    {
+        $match: {
+            CurrentBalance: { $gt: 10000, $lt: 20000 }
+        }
+    },
+    {
+        $lookup: {
+            from: "customerPersonal",
+            localField: "_id",
+            foreignField: "_id",
+            as: "personal_details"
+        }
+    },
+    {
+        $project:{
+            phoneNumber: "$personal_details.phoneNumber"
+        }
+    }
+])
+
+4)
+db.customerAccount.find({ "AccountType": "Savings" })
+
+5)
+
+
+
+
+
+
+
+
+
+NODE JS :
+
+        * Node is a backend library from js .
+        * In Node , we can use Express js as middleware.
+        * Javascript -> Node -> Express -> 
+
+Node module: 
+         * Helps to include modules in our code .
+
+    Custom module examples :
+        
+        const http = require('http');  //Built-in module
+        const express = require('express');  //Third-party module
+        const sayHello = require('./Greet');  //Custom module

@@ -1,0 +1,52 @@
+BROBS AND STATES :
+             * Every component will have brobs and states 
+    Brobs :
+            * It won't change 
+            *Eg: Tata , Bislerie it
+    States :
+            *It changes or we can change it .
+            *Eg : Water level in bottle 
+                     Initial state : FUll
+                     Updated state : Half
+                     Current state : Empty
+
+Flipkart website :
+        Home page - 
+                    Brobs : Flipkart logo , name
+                    Grocery , mobile , fashion (Components)
+        Mobiles - 
+                    Component name : Mobiles
+                    Brobs : Name , version , price
+                    States: Discount , available 
+
+                    output should be 
+                          flipkart
+                          name , version , price 
+
+Create two files parent.js , child.js and write props components in child file 
+
+To create : (components)
+*Home.js
+*About.js
+*Contact.js
+
+
+ROUTER :
+
+npm install react-router-dom
+
+REACT HOOKS :
+    Earlier in IT industry , they were using class components , reason being state concept was not available with functional
+    components.
+    Now Hooks is used to implement states in functional components .
+            Types :
+                   1. useState
+                   2. useEffect
+                   3. useRef
+                   4. useContext
+                   5. useReducer
+
+
+        *Best example for useState : Counter Clock, 
+                                            stating the initial state as 0, we can increment , decrement , reset using the hook.
+        

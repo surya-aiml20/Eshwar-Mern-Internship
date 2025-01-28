@@ -1,0 +1,58 @@
+A simple counter application where you can increment or decrement the count value.
+It demonstrates basic usage of React's useState for state management and useEffect for monitoring state changes.
+
+import React, {useState, useEffect} from 'react';
+
+const Clock2 = () => {
+    const [starts, updates] = useState(0);
+    useEffect(() => {console.log('The starts value has changed:',starts);},[starts]);
+  return (
+    <div>
+        <h1>{starts}</h1>
+        <button onClick={() => updates(starts+1)}>+</button>
+        <button onClick={() => updates(starts-1)}>+</button>
+    </div>
+  )
+}
+export default Clock2
+
+USEREDUCER :
+            -> Same as useState to manage or update states that is datha that is values of componennts.
+            -> Difference is if you have more states or complex things , use  USEREDUCER hook .
+    Step 1:
+        * Create increment decrement program using useState
+    Step 2:
+        * Replace useState with USEREDUCER 
+Note:
+    1) USEREDUCER takes 2 arguments first is reducerfunction which says what you want to do (like increment or decrement)
+        second argument is initial value of the state
+    
+    2) USEREDUCER returns array with two values like useState
+                first is the initial count and second is dispatch functionwhich we call them as state and dispatch.
+    
+    3) State will hold initial value and updated. Once you call dispatch , reducerfunction will be triggered.
+
+
+
+
+
+    *Display 2 static variable values on screen , that static variables should be js objects
+    * Get a password from the user as input , if the pass is correct , display : the login is granter
+                                              if the pass is incorrect , display: Access denied
+
+
+import React from 'react'
+const Jsobjdisplay = () => {
+    var obj = {
+        number:100,
+        name:"Ajith"
+    }
+  return (
+    <div>
+      <h1>{obj.number}</h1>
+      <h1>{obj.name}</h1>
+    </div>
+  )
+}
+
+export default Jsobjdisplay

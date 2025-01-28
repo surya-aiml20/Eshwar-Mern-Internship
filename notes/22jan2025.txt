@@ -1,0 +1,51 @@
+Redux in React :
+            *Redux is a state management library often used with React to manage the application's state in a predictable and 
+                centralized manner. 
+            *It helps maintain a single source of truth (the Redux Store) for the app's state and provides a predictable way to update that state.
+Installation :
+            npm i @reduxjs/toolkit react-redux
+
+@reduxjs/toolkit - 
+            library to create redux store and slices , they have given a library and this is the library 
+react-redux :
+            package which helps to connect react componennts to the redux store
+
+Installing router :
+            npm i react-router-dom
+
+ROUTING ARCHITECTURE:
+
+router
+routes
+route
+path
+route
+routes
+router
+    
+Note :
+       *userInfo is the key for reducers and useReducer is the name we give for reducer actions we get from userslice.js
+=========================
+* To access the data from redux we use , useSelector hook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+explanation : state is a callback function .

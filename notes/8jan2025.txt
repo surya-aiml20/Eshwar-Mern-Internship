@@ -1,0 +1,91 @@
+Write a promise called Andhra-bp . Distance : Andhra - A (5000) , Andhra - B (2000) , Andhra - C (1000)
+  Expected output : C reached , B reached , A reached
+
+Promise in-built methods :
+  
+  * When there is more than one promise , in-order to review them , we can use promise in-built methods according to the requirement.
+
+   Methods :
+
+     1 . Promise.all
+     2 . Promise.any
+     3 . Promise.allSettle
+     4 . Promise.race
+
+        1. Promise.all 
+            *Once it sees a promise false , it will stop.
+        
+        2 . Primse.any
+            * Gives the shortest time promise , provided , the status should be true.
+
+        3 . Promise.allSettled
+            * Will display one among these 3 states :
+                                                       1 fulfilled 
+                                                       2 rejected 
+                                                       3 pending.
+        
+        4. Promise.race
+            * Any will only work with true , race will even work with false.
+
+CLOSURE :
+
+* Closure in JavaScript is a function that has access to its outer function's scope, even when the outer function has returned. 
+* This allows the inner function to use and manipulate variables from the outer function's scope, even after the outer function 
+has finished executing.
+
+REACT JS :
+     
+     It is a library or a framework of javascript.
+     Eg: Netflix , amazon , instagram , facebook , etc.
+
+     HTML websites : Youtube , wikipedia , etc.
+
+
+REACT BASICS :
+
+   1  create a new folder named react in desktop
+   2  double click the folder , go on address bar and type [cmd and press enter]
+   3  node -v [ this is to check version of node]
+   4  npm -v [check version of npm]
+   
+   CREATING REACT APP USING BELOW COMMANDS :
+   5  type : npx create-react-app projectname 
+   6  type : npm start ( open ur app at port 3000)
+
+   make it work :
+   7 open ur react folder ( u will see ur app folder got created)
+
+   to open my app is vs code
+   7  go to cmd prompt and type cd projectname
+   8  code . (enter)
+
+   to run in vs code 
+   9   open terminal and type : npm start
+   10  if getting error , type : npm i web-vitals
+   11  then type : npm start ( in this step a webpage will be opened in ur default browser)
+
+   Two important folders in react :
+      1 Public 
+      2 Src
+   
+   Three improtant files :
+      1 Index.HTML
+      2 Index.css
+      3 Index.JS
+    Note : 
+          *As of now don't touch Index files.
+          * Initially do or write your code in App.JS
+    DOM :
+         * React follows virtual DOM (v dom)
+         * Here unlike HTML , once DOM gets created , the changes are manipulation of what we do gets completed and only that part
+           will get re-rendered
+        * Where-as in HTML , everytime we make chnage , entire DOM will be re-rendered
+
+    Note :
+          * React is a library of javascript
+          * In a web application created by react , everything is called as components.
+          Types of components :
+                            1 functional components
+                            2 Class components
+    JSX :
+        *Writing HTML inside javascript is called JSX

@@ -1,0 +1,172 @@
+Array concept basics in react js :
+
+import React from 'react'
+const Array1 = () => {
+    var arr1 = [1, 2, 5]
+    var arr2 = [3, 4, 6]
+    const combinearr = () => {
+        document.getElementById("res").innerHTML = arr1.concat(arr2)
+    }
+  return (
+    <div>
+      <h1>Array 1 elements are : {arr1}</h1>
+      <h1>Array 2 elements are : {arr2}</h1>
+      <h1 id ="res"></h1>
+      <button onClick={combinearr}>Combine two arrays</button>
+    </div>
+  )
+}
+export default Array1
+
+SPREAD OPERATOR :
+*Passing array into useState.
+       const array1 = [1,2,3];
+       const array2 = [4,5,6];
+
+       const combinedArray = [...array1, ...array2];
+       
+       console.log('Array 1:',array1 )
+       console.log('Array 2:',array2 )
+       console.log('Combined Array:', combinedArray);
+
+
+Create two files parent1.js and child1.js and respective component should be parentcomponent and childcomponent
+and i need output like :
+Parent component
+Data from parent : Hello from Parent
+Data from Child: Hello from Child
+Child component
+Data from Parent: Hello from Parent
+button : Send Data to Parent
+
+
+     1. Parent to parent , Child to parent
+
+*parent component:
+
+import React,{useState} from 'react'
+import { Child1 } from './child1'
+
+export const Parent1 = () => {
+
+    const [parent_message, setParentMessage] = useState("Hello from Parent");
+    const [ child_message, setChildMessage] = useState('hai');
+
+    const datafromchildd = (message) => {
+        setChildMessage(message);
+    }
+
+  return (
+    <div>
+        <h1>Parent component</h1>
+        <p>Data from Parent: {parent_message}</p>
+        <p>Data from Child: {child_message}</p>
+        <Child1 msg={parent_message} datatoparent={datafromchildd} />
+        {/* <button onClick={send_message}>Send Data to Parent</button> */}
+        
+    </div>
+  )
+} 
+
+*child component:
+
+import React,{useState} from 'react'
+
+export const Child1 = (props, datatoparent) => {
+
+    const [child_message, setChildMessage] = useState("Hello from Child");
+
+    const send_message = () => {
+        props.datatoparent(child_message);
+
+    }
+
+  return (
+    <div>
+        <h1>Child component</h1>
+        <p>Data from Parent: {props.msg}</p>
+        <button onClick={send_message}>Send Data to Parent</button>
+    </div>
+  )
+}
+
+
+
+        2. Parent to Parent , Child to Parent , Grandpa to Child and Parent
+
+*parent
+
+import React, { useState } from 'react';
+import {Childcomp} from './childcomp';
+import { Grandmother } from './grandmother';
+
+export const Parentcomp = () => {
+    const [msg,setmsg]=useState("Hi from parent")
+    const[childmsg,setchildmsg]=useState('')
+    const[grandmamsg,setgrandmamsg]=useState('')
+    const onchange=(message,message2)=>
+    {
+        setchildmsg(message)
+        setgrandmamsg(message2)
+    }
+  return (
+    <div>
+        <h1>Parent Component</h1>
+        <h1>{msg}</h1>
+        <h2>{childmsg}</h2>
+        <h2>{grandmamsg}</h2>
+        <Childcomp msg={msg} datafromchild={onchange}/>
+    </div>
+  )
+}
+
+*children 
+import React, { useState } from 'react';
+import { Grandmother } from './grandmother';
+export const Childcomp = (props,datafromchild) => {
+    const[child_msg,setchildmsg]=useState("hello from child")
+    const[grandmamsg,setgrandmamsg]=useState('')
+    const onchange3=(message3,message4)=>
+        {
+            setgrandmamsg(message3)
+            props.datafromchild(child_msg,message4)
+
+        }
+    const sendmsgtoparent=()=>
+    {
+        props.datafromchild(child_msg)
+    }
+        
+
+  return (
+    <div>
+        <h1>Child component</h1>
+        <h2>Data from parent :{props.msg}</h2>
+        <h2>Data from grandmother :{grandmamsg}</h2>
+        <button onClick={sendmsgtoparent}>send to parent </button>
+        <Grandmother msg={grandmamsg} datafromgrandmother={onchange3}/>
+        {/* <button onClick={sendmsgtoparent}>send to parent </button> */}
+    </div>
+  )
+}
+
+
+
+*Grandpa
+
+import React, { useState } from 'react'
+
+export const Grandmother = (props,datafromgrandmother) => {
+    const [gm_msg,setgmmsg]=useState("hi i am grandmother");
+    const sendmsgtoparent1 =()=>
+    {
+        props.datafromgrandmother(gm_msg,"hi i am gm")
+    }
+  return (
+    <div>
+        <h1>grandmother component</h1>
+        <h1>Data from parent:{props.msg}</h1>
+        <button onClick={sendmsgtoparent1}>send to parent and child</button>
+    </div>
+  )
+}

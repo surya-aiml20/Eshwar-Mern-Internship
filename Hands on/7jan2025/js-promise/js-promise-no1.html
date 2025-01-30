@@ -1,0 +1,21 @@
+<html>
+    <script>
+        let thatkalbooking = new Promise((resolve , reject) => {
+            let booking = true
+            if(booking)resolve()
+            else reject()
+        })
+
+        thatkalbooking.then(success).catch(failure)
+        function success(){
+            console.log("Booking Success , I'll send money")
+        }
+        function failure(){
+            console.log("Thanks for trying ")
+        }
+
+        
+    </script>
+</html>
+
+

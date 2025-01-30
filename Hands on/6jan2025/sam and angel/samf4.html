@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <h1>With Argument and With Return Type (Single-Line Calculation)</h1>
+    </body>
+    <script>
+        function calc(c) {
+            // Perform the calculation in one line and return the result as an object
+            return { sam: (c -= c / 2) + c / 2, angel: c / 2 + c / 4 };
+        }
+
+        // Call the function with an argument
+        const result = calc(75);
+
+        // Display the result
+        console.log(`Sam has ${result.sam} candies.`);
+        console.log(`Angel has ${result.angel} candies.`);
+    </script>
+</html>
+
+
+
+
+
+

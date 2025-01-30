@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h1>Without Argument and With Return Type (Single-Line Calculation)</h1>
+    </body>
+    <script>
+        function calc() {
+            var c = 75; // Sam starts with 75 candies
+            // Perform the calculation in one line
+            return { sam: (c -= c / 2) + c / 2, angel: (c / 2) + (c / 4) };
+        }
+
+        var res = calc();
+        console.log(`Sam has ${res.sam} candies.`);
+        console.log(`Angel has ${res.angel} candies.`);
+    </script>
+</html>

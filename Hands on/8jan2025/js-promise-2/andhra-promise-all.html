@@ -1,0 +1,34 @@
+<html>
+    <script>
+        //Write a promise called Andhra-bp . Distance : Andhra - A (5000) , Andhra - B (2000) , Andhra - C (1000)
+        //Expected output : C reached , B reached , A reached
+        let reachA = new Promise((resolve , reject)=>{
+            let reached = true
+            if(reached)
+                setTimeout(resolve , 5000 , "A reached")
+        else
+            reject("A not reached") 
+        })
+
+        let reachB = new Promise((resolve , reject)=>{
+            let reached = true
+            if(reached)
+                setTimeout(resolve , 2000 , "B reached")
+        else
+            reject("B not reached") 
+        })
+
+        let reachC = new Promise((resolve , reject)=>{
+            let reached = true
+            if(reached)
+                setTimeout(resolve , 1000 , "C reached")
+        else
+            reject("C not reached") 
+        })
+
+        Promise.all([reachA,reachB,reachC])
+        .then((message)=>console.log(message))
+        .catch((message)=>console.log(message))
+
+    </script>
+</html>

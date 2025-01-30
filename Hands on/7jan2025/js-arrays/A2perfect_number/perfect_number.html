@@ -1,0 +1,26 @@
+<html>
+<script>
+
+// Function to check if a number is perfect
+function isPerfectNumber(num) {
+  var sum = 0;
+  for (var i = 1; i <= num / 2; i++) {
+    if (num % i === 0) sum += i;
+  }
+  return sum === num && num > 1;
+}
+
+// Get array size and elements from user
+var size = parseInt(prompt("Enter array size:"));
+var nums = [];
+for (var i = 0; i < size; i++) {
+  nums.push(parseInt(prompt("Enter element " + (i + 1))));
+}
+
+// Filter and display perfect numbers
+console.log("Perfect numbers:", nums.filter(isPerfectNumber));
+
+</script>
+</html>
+
+
